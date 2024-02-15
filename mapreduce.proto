@@ -1,0 +1,24 @@
+// mapreduce.proto
+
+syntax = "proto3";
+
+message MapRequest {
+    string input_data = 1;
+}
+
+message MapResponse {
+    repeated string mapped_data = 1;
+}
+
+message ReduceRequest {
+    repeated string mapped_data = 1;
+}
+
+message ReduceResponse {
+    string reduced_data = 1;
+}
+
+service MapReduce {
+    rpc Map(MapRequest) returns (MapResponse) {}
+    rpc Reduce(ReduceRequest) returns (ReduceResponse) {}
+}
